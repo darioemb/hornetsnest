@@ -19,6 +19,7 @@ file(GLOB_RECURSE CU_SRCS ${PROJECT_SOURCE_DIR}/src/*.cu)
 
 cuda_add_library(hornetAlg ${CU_SRCS})
 #-------------------------------------------------------------------------------
+cuda_add_executable(weight_test   test/WeightTest.cu)
 cuda_add_executable(bfs      test/BFSTest.cu)
 cuda_add_executable(bfs2     test/BFSTest2.cu)
 cuda_add_executable(brim     test/BrimTest.cu)
@@ -30,6 +31,7 @@ cuda_add_executable(dyn_katz test/KatzDynamicTest.cu)
 cuda_add_executable(ktruss   test/KTrussTest.cu)
 #cuda_add_executable(Triangle test/TriangleTest.cu)
 
+target_link_libraries(weight_test   hornet ${CUDA_LIBRARIES})
 target_link_libraries(bfs      hornetAlg hornet)
 target_link_libraries(bfs2     hornetAlg hornet)
 target_link_libraries(brim     hornetAlg hornet)
